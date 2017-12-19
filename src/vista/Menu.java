@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import AppPackage.AnimationClass;
+import db.Conexion;
+
 
 /**
  *
@@ -18,13 +21,40 @@ public class Menu extends javax.swing.JFrame {
     AgregarV agregar;
     ListarVista listar;
     BorrarVista borrar;
+    
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
         setLocationRelativeTo(this);
+        if(Conexion.conectar()!=null){
+            JOptionPane.showMessageDialog(null, "Base de datos conectada!");
+        }
         
+    }
+
+    void botonMenu(){
+        AnimationClass ani = new AnimationClass();
+        
+        // ------>
+        ani.jLabelXRight(-135, 10, 10, 5, jLabelAgregar);
+        ani.jLabelXRight(-135, 10, 10, 5, jLabelAgregarPelicula);
+        ani.jLabelXRight(-135, 10, 10, 5, jLabelAgregarCategoria);
+        ani.jLabelXRight(-135, 10, 10, 5, jLabelListar);
+        ani.jLabelXRight(-135, 10, 10, 5, jLabelSalir);
+        ani.jLabelXRight(-145, 0, 10, 5, jLabelFondoMenu);
+        
+        
+        // <------
+        ani.jLabelXLeft(10, -135, 10, 5, jLabelAgregar);
+        ani.jLabelXLeft(10, -135, 10, 5, jLabelAgregarPelicula);
+        ani.jLabelXLeft(150, -135, 5, 5, jLabelAgregarPelicula);
+        ani.jLabelXLeft(10, -135, 10, 5, jLabelAgregarCategoria);
+        ani.jLabelXLeft(150, -135, 5, 5, jLabelAgregarCategoria);
+        ani.jLabelXLeft(10, -135, 10, 5, jLabelListar);
+        ani.jLabelXLeft(10, -135, 10, 5, jLabelSalir);
+        ani.jLabelXLeft(0, -145, 10, 5, jLabelFondoMenu);        
     }
     void ap(){
         try {
@@ -43,97 +73,181 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jLabelMenu = new javax.swing.JLabel();
+        jLabelAgregar = new javax.swing.JLabel();
+        jLabelListar = new javax.swing.JLabel();
+        jLabelSalir = new javax.swing.JLabel();
+        jLabelFondoMenu = new javax.swing.JLabel();
+        jLabelAgregarPelicula = new javax.swing.JLabel();
+        jLabelAgregarCategoria = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VideoBuster");
+        setBackground(new java.awt.Color(102, 102, 255));
+        setForeground(java.awt.Color.cyan);
+        setPreferredSize(new java.awt.Dimension(400, 500));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/videobuster.png"))); // NOI18N
-
-        jMenu1.setText("File");
-
-        jMenuItem1.setText("Agregar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        jLabelMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/menu.png"))); // NOI18N
+        jLabelMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelMenuMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        getContentPane().add(jLabelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jMenuItem2.setText("Listar / Modificar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        jLabelAgregar.setBackground(new java.awt.Color(0, 51, 51));
+        jLabelAgregar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/button_plus_blue.png"))); // NOI18N
+        jLabelAgregar.setText("Agregar");
+        jLabelAgregar.setToolTipText("");
+        jLabelAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelAgregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabelAgregarMouseMoved(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Borrar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+        jLabelAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAgregarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelAgregarMouseExited(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        getContentPane().add(jLabelAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 60, 130, 70));
 
-        jMenuItem4.setText("Salir");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+        jLabelListar.setBackground(new java.awt.Color(0, 51, 51));
+        jLabelListar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelListar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/windows_table.png"))); // NOI18N
+        jLabelListar.setText("Listar / Modificar");
+        jLabelListar.setToolTipText("");
+        jLabelListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelListar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelListar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelListarMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        getContentPane().add(jLabelListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 150, 130, 70));
 
-        jMenuBar1.add(jMenu1);
+        jLabelSalir.setBackground(new java.awt.Color(0, 51, 51));
+        jLabelSalir.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/exit (2).png"))); // NOI18N
+        jLabelSalir.setText("Salir");
+        jLabelSalir.setToolTipText("");
+        jLabelSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelSalirMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabelSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 240, 130, 70));
 
-        setJMenuBar(jMenuBar1);
+        jLabelFondoMenu.setBackground(new java.awt.Color(0, 102, 153));
+        jLabelFondoMenu.setOpaque(true);
+        getContentPane().add(jLabelFondoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-145, 50, 140, 270));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabelAgregarPelicula.setBackground(new java.awt.Color(0, 51, 51));
+        jLabelAgregarPelicula.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelAgregarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAgregarPelicula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAgregarPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/movie_industry.png"))); // NOI18N
+        jLabelAgregarPelicula.setText("Agregar Pelicula");
+        jLabelAgregarPelicula.setToolTipText("");
+        jLabelAgregarPelicula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelAgregarPelicula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelAgregarPelicula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelAgregarPelicula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAgregarPeliculaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabelAgregarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 60, 130, 70));
+
+        jLabelAgregarCategoria.setBackground(new java.awt.Color(0, 51, 51));
+        jLabelAgregarCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelAgregarCategoria.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAgregarCategoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAgregarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/movies (1).png"))); // NOI18N
+        jLabelAgregarCategoria.setText("Agregar Categoria");
+        jLabelAgregarCategoria.setToolTipText("");
+        jLabelAgregarCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelAgregarCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelAgregarCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelAgregarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAgregarCategoriaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabelAgregarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 135, 130, 70));
+
+        jLabelFondo.setBackground(new java.awt.Color(0, 51, 102));
+        jLabelFondo.setOpaque(true);
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        agregar = new AgregarV();
-        agregar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jLabelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMenuMouseClicked
+        botonMenu();
+    }//GEN-LAST:event_jLabelMenuMouseClicked
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+    private void jLabelSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSalirMouseClicked
+        int salir = JOptionPane.showConfirmDialog(null, "Esta seguro que quiere salir?","Salir", 0);
+        if (salir==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabelSalirMouseClicked
+
+    private void jLabelAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarMouseClicked
+
+        AnimationClass ani = new AnimationClass();
+        ani.jLabelXRight(10, 150, 10, 5, jLabelAgregarPelicula);
+        ani.jLabelXLeft(150, 10, 10, 5, jLabelAgregarPelicula);
+        ani.jLabelXRight(10, 150, 10, 5, jLabelAgregarCategoria);
+        ani.jLabelXLeft(150, 10, 10, 5, jLabelAgregarCategoria);
+    }//GEN-LAST:event_jLabelAgregarMouseClicked
+
+    private void jLabelListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelListarMouseClicked
+        botonMenu();
         listar = new ListarVista();
         listar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jLabelListarMouseClicked
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        borrar = new BorrarVista();
-        borrar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jLabelAgregarPeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarPeliculaMouseClicked
+        botonMenu();
+        agregar = new AgregarV();
+        agregar.setVisible(true);
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+    }//GEN-LAST:event_jLabelAgregarPeliculaMouseClicked
+
+    private void jLabelAgregarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarCategoriaMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jLabelAgregarCategoriaMouseClicked
+
+    private void jLabelAgregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarMouseMoved
+        
+    }//GEN-LAST:event_jLabelAgregarMouseMoved
+
+    private void jLabelAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelAgregarMouseExited
 
     /**
      * @param args the command line arguments
@@ -172,12 +286,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JLabel jLabelAgregar;
+    private javax.swing.JLabel jLabelAgregarCategoria;
+    private javax.swing.JLabel jLabelAgregarPelicula;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelFondoMenu;
+    private javax.swing.JLabel jLabelListar;
+    private javax.swing.JLabel jLabelMenu;
+    private javax.swing.JLabel jLabelSalir;
     // End of variables declaration//GEN-END:variables
 }

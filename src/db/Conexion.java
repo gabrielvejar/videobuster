@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +24,11 @@ public class Conexion {
              String user="HR";
              String pass="123456";
              System.out.println("Proceso de Conexión...");
+             
              try {
                  conect= DriverManager.getConnection(url, user, pass);
                  System.out.println("Base de datos Conectada!!");
+                 
              }catch (SQLException e) {
                  System.out.println(e.getMessage());
                  e.printStackTrace();    

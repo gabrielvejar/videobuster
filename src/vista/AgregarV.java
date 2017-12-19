@@ -129,6 +129,7 @@ public class AgregarV extends javax.swing.JFrame {
         jPrecio.setText(null);
         jComboCategoria.setSelectedIndex(0);
         radioAzucarSi.setSelected(true);
+        jCodigo.requestFocus();
     }
     
     /**
