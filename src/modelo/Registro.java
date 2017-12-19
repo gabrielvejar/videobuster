@@ -6,6 +6,7 @@
 package modelo;
 
 import db.Conexion;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -136,8 +137,21 @@ public class Registro {
         return Conexion.delete(sql);
     }      
     
+
+
     public ResultSet listarCategoria(){
-        return Conexion.listaCategorias();
+        ResultSet resultSet=null;
+        
+        try {
+            String sql = "SELECT * FROM VB_CATEGORIA";
+            PreparedStatement preparedStatement = Conexion.conectar().prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException sQLException) {
+        }
+
+
+        return resultSet;
     }
+
     
 }

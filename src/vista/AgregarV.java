@@ -5,9 +5,8 @@
  */
 package vista;
 
-import controlador.ComboCategoria;
+//import controlador.ComboCategoria;
 import controlador.RegistroControlador;
-import db.Conexion;
 import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,14 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Pelicula;
-import modelo.Registro;
 
 /**
  *
  * @author Gabriel
  */
 public class AgregarV extends javax.swing.JFrame {
-    private Registro lisCon;
     private RegistroControlador regCon;
     /**
      * Creates new form AgregarV
@@ -32,7 +29,6 @@ public class AgregarV extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         grupoAzucar.add(radioAzucarSi);
         grupoAzucar.add(radioAzucarNo);  
-        lisCon = new Registro();  
         regCon = new RegistroControlador();
         comboCategoria();
     }
@@ -40,9 +36,9 @@ public class AgregarV extends javax.swing.JFrame {
     
     void comboCategoria(){
         try {
-            ComboCategoria categorias = new ComboCategoria();
             
-            ResultSet rst = categorias.listaCategoria();
+            
+            ResultSet rst = regCon.listaCategoria();
             
             while (rst.next()){
                 jComboCategoria.addItem(rst.getString(2));
@@ -70,7 +66,7 @@ public class AgregarV extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El código de la película debe ser un número entre 10000 y 99999");
                 
             } else {
-                if (lisCon.buscar(codigo)) {
+                if (regCon.buscar(codigo)) {
                     x = false;
                     JOptionPane.showMessageDialog(null, "El código ya existe");
                 }

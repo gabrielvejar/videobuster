@@ -5,7 +5,6 @@
  */
 package vista;
 
-import controlador.ComboCategoria;
 import controlador.RegistroControlador;
 import java.awt.HeadlessException;
 import java.sql.ResultSet;
@@ -17,7 +16,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pelicula;
-import modelo.Registro;
 
 /**
  *
@@ -25,7 +23,6 @@ import modelo.Registro;
  */
 public class ListarVista extends javax.swing.JFrame {
     private DefaultTableModel defaultTableModel;
-    private Registro lisCon;
     private RegistroControlador regCon;
     
     
@@ -59,7 +56,6 @@ public class ListarVista extends javax.swing.JFrame {
         defaultTableModel.addColumn("FORMATO 4K");
         defaultTableModel.addColumn("NOMBRE");
         jTable1.setModel(defaultTableModel);
-        lisCon = new Registro();
         regCon= new RegistroControlador();
         lista();
         comboCategoria();
@@ -69,9 +65,9 @@ public class ListarVista extends javax.swing.JFrame {
     
     void comboCategoria(){
         try {
-            ComboCategoria categorias = new ComboCategoria();
             
-            ResultSet rst = categorias.listaCategoria();
+            
+            ResultSet rst = regCon.listaCategoria();
             
             while (rst.next()){
                 jComboCategoria.addItem(rst.getString(2));

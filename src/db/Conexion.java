@@ -104,17 +104,17 @@ public class Conexion {
     }
     
     
-    public static ResultSet listaCategorias(){
-        ResultSet resultSet=null;
-        
-        try {
-            String sql = "SELECT * FROM VB_CATEGORIA";
-            PreparedStatement preparedStatement = Conexion.conectar().prepareStatement(sql);
-            resultSet = preparedStatement.executeQuery();
-        } catch (SQLException sQLException) {
-        }
-
-
-        return resultSet;
-    }    
+    /*    public static ResultSet listaCategorias(){
+    ResultSet resultSet=null;
+    
+    try {
+    String sql = "SELECT * FROM VB_CATEGORIA";
+    PreparedStatement preparedStatement = Conexion.conectar().prepareStatement(sql);
+    resultSet = preparedStatement.executeQuery();
+    } catch (SQLException sQLException) {
+    }
+    
+    
+    return resultSet;
+    }    */
 }
